@@ -1,10 +1,14 @@
 import React from 'react';
+import TodoService from './services/TodoService';
 import './App.css';
 
+const todoService = new TodoService();
+
 function App() {
+  todoService.all();
   return (
     <div className="App">
-      <h1>Hello World!</h1>
+      <h1>Todos</h1>
     </div>
   );
 }
