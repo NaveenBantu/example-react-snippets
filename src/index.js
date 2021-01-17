@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const caption = <h1>Todos</h1>;
+const item1 = <li>Prepare dinner</li>;
+const item2 = <li>Learn React</li>;
+const item3 = <li>Buy socks</li>;
+const list = <ul>{item1}{item2}{item3}</ul>;
+const page = <div>{caption}<hr/>{list}</div>
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(page, document.getElementById('root'));
