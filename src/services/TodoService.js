@@ -1,6 +1,6 @@
 import Todo from '../model/Todo';
 
-export default class TodoService {
+export class TodoService {
 
     // constructor /////
 
@@ -23,6 +23,13 @@ export default class TodoService {
             )
         );
 
+        this.create(
+            new Todo(
+                'Meet Duke',
+                'Discuss differences between Java and JavaScript.'
+            )
+        );
+
     }
 
     // methods /////
@@ -32,7 +39,7 @@ export default class TodoService {
         this.count++;
         todo.id = this.count;
         this.todos.set(todo.id, todo);
-        return Promise.resolve(todo.id);
+        return todo.id;
 
     }
 
@@ -41,14 +48,10 @@ export default class TodoService {
         const todo = this.todos.get(todoId);
 
         if (todo) {
-            return Promise.resolve(
-                this.todos.get(todoId)
-            );
+            return this.todos.get(todoId);
         } // if
         else {
-            return Promise.reject(
-                new Error(`TODO ${todoId} not found!`)
-            );
+            throw new Error(`TODO ${todoId} not found!`);
         } // else
 
     }
@@ -56,22 +59,22 @@ export default class TodoService {
     delete(todoId) {
 
         if (this.todos.delete(todoId)) {
-            return Promise.resolve('Ok');
+            return 'Ok';
         } // if
         else {
-            return Promise.reject(
-                new Error(`Could not delete TODO ${todoId}!`)
-            );
+            throw new Error(`Could not delete TODO ${todoId}!`);
         } // else
 
     }
 
     all() {
 
-        return Promise.resolve(
-            this.todos.values()
-        );
+        return Array.from(this.todos.values());
 
     }
 
 }
+
+const todoService = new TodoService();
+
+export default todoService;
