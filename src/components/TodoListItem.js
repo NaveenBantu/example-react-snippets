@@ -1,10 +1,16 @@
 import React from 'react';
 
-export default function TodoListItem(props) {
-    return (
-        <div>
-            <input type="hidden" value={props.todo.id}/>
-            <input type="text"   value={props.todo.caption}/>
-        </div>
-    );
+export default class TodoListItem extends React.Component {
+
+    render() {
+
+        return (
+            <div>
+                <input type="hidden" value={this.props.todo.id}/>
+                <input type="text"   value={this.props.todo.caption}/>
+            </div>
+        );
+
+    }
+
 }

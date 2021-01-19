@@ -4,18 +4,23 @@ import TodoList from './components/TodoList';
 import { currentYear } from './utils/time-utils';
 import './App.css';
 
-function App() {
+class App extends React.Component {
 
-  const todos = todoService.all();
+  render() {
 
-  return (
-    <div className="App">
-      <h1>Todos</h1>
-      <hr/>
-      <div>jukia.com - &copy; {currentYear()}</div>
-      <TodoList todos={todos}/>
-    </div>
-  );
+    const todos = todoService.all();
+
+    return (
+      <div className="App">
+        <h1>Todos</h1>
+        <hr/>
+        <div>jukia.com - &copy; {currentYear()}</div>
+        <TodoList todos={todos}/>
+      </div>
+    );
+    
+   }
+
 }
 
 export default App;
