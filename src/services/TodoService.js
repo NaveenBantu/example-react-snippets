@@ -67,7 +67,7 @@ export class TodoService {
 
     }
 
-    all() {
+    async all() {
 
         return Array.from(this.todos.values());
 
