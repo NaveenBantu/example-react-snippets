@@ -1,5 +1,5 @@
 import React from 'react';
-import Clock from "./components/Clock";
+import Clock from './components/Clock';
 import TodoList from './components/TodoList';
 import { currentYear } from './utils/time-utils';
 import './App.css';
@@ -8,12 +8,26 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Todos</h1>
+      <div>
+        <h1>Todos</h1>
+        <div>jukia.com - &copy; {currentYear()}</div>
+      </div>
       <hr/>
-      <div>jukia.com - &copy; {currentYear()}</div>
-      <TodoList/>
+      <div style={{display: "flex", flexDirection: "row"}}>
+        <span>
+          <nav>
+            <h2 id="app-menu-caption">My Todos</h2>
+            <div id="app-menu">
+              <TodoList/>
+            </div>
+          </nav>
+        </span>
+        <span id="app-content"><div>One Todo</div></span>
+      </div>
       <hr/>
-      <Clock/>
+      <div>
+        <Clock/>
+      </div>
     </div>
   );
 
