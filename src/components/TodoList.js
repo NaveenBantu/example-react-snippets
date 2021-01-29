@@ -24,14 +24,10 @@ export default class TodoList extends React.Component {
 
         const items =
             this.state.todos.map(
-                item => <li><TodoListItem todo={item}/></li>
+                item => <TodoListItem todo={item}/>
             );
 
-        return (
-            <ul>
-                {items}
-            </ul>
-        );
+        return <ul>{items}</ul>;
 
     }
 
