@@ -27,7 +27,7 @@ export default class TodoList extends React.Component {
                 item => <TodoListItem todo={item}/>
             );
 
-        return <ul>{items}</ul>;
+        return <ul className={'todo-list'}>{items}</ul>;
 
     }
 
