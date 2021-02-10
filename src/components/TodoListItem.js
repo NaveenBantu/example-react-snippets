@@ -26,15 +26,15 @@ export default class TodoListItem extends React.Component {
 
         return (
             <li>
-                <button onClick={this.handleDelete}>
-                    <MdDelete/>
-                </button>
                 <span
                     className = {cssClass}
                     onClick   = {this.handleSelect}
                 >
                     {this.props.todo.caption}
                 </span>
+                <button onClick={this.handleDelete}>
+                    <MdDelete/>
+                </button>
             </li>
         );
 
