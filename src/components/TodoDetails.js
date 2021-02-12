@@ -10,21 +10,18 @@ export default class TodoDetails extends React.Component {
         this.state = {
             caption:     props.todo.caption,
             description: props.todo.description,
-            priority:    props.todo.priority
+            priority:    props.todo.priority,
+            done:        props.todo.done
         };
 
     }
 
-    handleChangeCaption = event => {
-        this.setState({ caption: event.target.value });
-    }
+    handleChange = event => {
+        const target = event.target;
+        const value  = target.type === 'checkbox' ? target.checked : target.value;
+        const name   = target.name;
 
-    handleChangeDescription = event => {
-        this.setState({ description: event.target.value });
-    }
-
-    handleChangePriority = event => {
-        this.setState({ priority: event.target.value });
+        this.setState({ [name]: value });
     }
 
     handleSubmit = event => {
@@ -41,7 +38,7 @@ export default class TodoDetails extends React.Component {
                         name     = "caption"
                         type     = "text"
                         value    = {this.state.caption}
-                        onChange = {this.handleChangeCaption}
+                        onChange = {this.handleChange}
                     />
                 </label>
                 <label>
@@ -49,7 +46,7 @@ export default class TodoDetails extends React.Component {
                     <textarea
                         name     = "description"
                         value    = {this.state.description}
-                        onChange = {this.handleChangeDescription}
+                        onChange = {this.handleChange}
                     />
                 </label>
                 <label>
@@ -57,12 +54,21 @@ export default class TodoDetails extends React.Component {
                     <select
                         name     = "priority"
                         value    = {this.state.priority}
-                        onChange = {this.handleChangePriority}
+                        onChange = {this.handleChange}
                     >
                         <option value={Priority.high}>high</option>
                         <option value={Priority.medium}>medium</option>
                         <option value={Priority.low}>low</option>
                     </select>
+                </label>
+                <label>
+                    done
+                    <input
+                        name     = "done"
+                        type     = "checkbox"
+                        value    = {this.state.done}
+                        onChange = {this.handleChange}
+                    />
                 </label>
                 <input type="submit" value="Submit"/>
             </form>

@@ -12,6 +12,7 @@ export default class Todo {
         this.caption     = caption     || '';
         this.description = description || '';
         this.priority    = priority    || Priority.medium;
+        this.done        = false;
 
     }
 
