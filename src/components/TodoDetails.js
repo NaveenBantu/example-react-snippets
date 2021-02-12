@@ -40,9 +40,8 @@ export default class TodoDetails extends React.Component {
                 </label>
                 <label>
                     Description
-                    <input
+                    <textarea
                         name     = "description"
-                        type     = "text"
                         value    = {this.state.description}
                         onChange = {this.handleChangeDescription}
                     />
