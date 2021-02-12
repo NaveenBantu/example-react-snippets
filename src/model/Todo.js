@@ -7,8 +7,8 @@ export default class Todo {
     constructor(caption, description) {
 
         this.id          = null;
-        this.caption     = caption;
-        this.description = description;
+        this.caption     = caption || '';
+        this.description = description || '';
 
     }
 
