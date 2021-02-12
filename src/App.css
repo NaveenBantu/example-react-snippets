@@ -21,6 +21,16 @@
   color: #09d3ac;
 }
 
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
 .todo-list {
   list-style: none;
 }
