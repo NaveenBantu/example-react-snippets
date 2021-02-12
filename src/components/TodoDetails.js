@@ -1,4 +1,5 @@
 import React from 'react';
+import Priority from '../model/Priority';
 
 export default class TodoDetails extends React.Component {
 
@@ -8,7 +9,8 @@ export default class TodoDetails extends React.Component {
 
         this.state = {
             caption:     props.todo.caption,
-            description: props.todo.description
+            description: props.todo.description,
+            priority:    props.todo.priority
         };
 
     }
@@ -19,6 +21,10 @@ export default class TodoDetails extends React.Component {
 
     handleChangeDescription = event => {
         this.setState({ description: event.target.value });
+    }
+
+    handleChangePriority = event => {
+        this.setState({ priority: event.target.value });
     }
 
     handleSubmit = event => {
@@ -45,6 +51,18 @@ export default class TodoDetails extends React.Component {
                         value    = {this.state.description}
                         onChange = {this.handleChangeDescription}
                     />
+                </label>
+                <label>
+                    Priority
+                    <select
+                        name     = "priority"
+                        value    = {this.state.priority}
+                        onChange = {this.handleChangePriority}
+                    >
+                        <option value={Priority.high}>high</option>
+                        <option value={Priority.medium}>medium</option>
+                        <option value={Priority.low}>low</option>
+                    </select>
                 </label>
                 <input type="submit" value="Submit"/>
             </form>

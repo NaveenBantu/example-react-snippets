@@ -1,14 +1,17 @@
+import Priority from "./Priority";
+
 /**
  * A TODO is an item, which contains information about some task that should
  * be done at some point in the future.
  */
 export default class Todo {
 
-    constructor(caption, description) {
+    constructor(caption, description, priority) {
 
         this.id          = null;
-        this.caption     = caption || '';
+        this.caption     = caption     || '';
         this.description = description || '';
+        this.priority    = priority    || Priority.medium;
 
     }
 
