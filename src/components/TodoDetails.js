@@ -3,30 +3,16 @@ import Priority from '../model/Priority';
 
 export default class TodoDetails extends React.Component {
 
-    constructor(props) {
-
-        super(props);
-
-        this.state = {
-            caption:     props.todo.caption,
-            description: props.todo.description,
-            priority:    props.todo.priority,
-            done:        props.todo.done
-        };
-
-    }
-
     handleChange = event => {
         const target = event.target;
         const value  = target.type === 'checkbox' ? target.checked : target.value;
         const name   = target.name;
-
-        this.setState({ [name]: value });
+        this.props.onEdit({ [name]: value });
     }
 
     handleSubmit = event => {
-        alert('A Todo was submitted!');
         event.preventDefault();
+        this.props.onStore();
     }
 
     render() {
@@ -37,7 +23,7 @@ export default class TodoDetails extends React.Component {
                     <input
                         name     = "caption"
                         type     = "text"
-                        value    = {this.state.caption}
+                        value    = {this.props.todo.caption}
                         onChange = {this.handleChange}
                     />
                 </label>
@@ -45,7 +31,7 @@ export default class TodoDetails extends React.Component {
                     Description
                     <textarea
                         name     = "description"
-                        value    = {this.state.description}
+                        value    = {this.props.todo.description}
                         onChange = {this.handleChange}
                     />
                 </label>
@@ -53,7 +39,7 @@ export default class TodoDetails extends React.Component {
                     Priority
                     <select
                         name     = "priority"
-                        value    = {this.state.priority}
+                        value    = {this.props.todo.priority}
                         onChange = {this.handleChange}
                     >
                         <option value={Priority.high}>high</option>
@@ -66,11 +52,14 @@ export default class TodoDetails extends React.Component {
                     <input
                         name     = "done"
                         type     = "checkbox"
-                        value    = {this.state.done}
+                        checked  = {this.props.todo.done}
                         onChange = {this.handleChange}
                     />
                 </label>
-                <input type="submit" value="Submit"/>
+                <input
+                    type  = "submit"
+                    value = {this.props.todo.id ? 'Update' : 'Create'}
+                />
             </form>
         );    
     }

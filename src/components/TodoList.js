@@ -1,30 +1,28 @@
 import React from 'react';
-import todoService from '../services/TodoService';
 import TodoListItem from './TodoListItem';
 
 export default class TodoList extends React.Component {
 
-    constructor(props) {
+    // Events /////
 
-        super(props);
+    handleSelect = idTodo => this.props.onSelect(idTodo);
 
-        this.state = { todos: [] };
+    handleDelete = idTodo => this.props.onDelete(idTodo);
 
-    }
 
-    componentDidMount() {
-
-        todoService.all().then(
-            todos => { this.setState({ todos: todos }); }
-        );
-    
-    }
+    // Rendering /////
 
     render() {
 
         const items =
-            this.state.todos.map(
-                item => <TodoListItem key={item.id.toString()} todo={item}/>
+            this.props.todos.map(
+                item => <TodoListItem
+                    key      = {item.id.toString()}
+                    todo     = {item}
+                    selected = {this.props.todo && item.id === this.props.todo.id}
+                    onSelect = {this.handleSelect}
+                    onDelete = {this.handleDelete}
+                />
             );
 
         return <ul className={'todo-list'}>{items}</ul>;

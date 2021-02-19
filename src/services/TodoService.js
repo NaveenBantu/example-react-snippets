@@ -34,7 +34,7 @@ export class TodoService {
 
     // methods /////
 
-    create(todo) {
+    async create(todo) {
 
         this.count++;
         todo.id = this.count;
@@ -43,7 +43,7 @@ export class TodoService {
 
     }
 
-    get(todoId) {
+    async get(todoId) {
 
         const todo = this.todos.get(todoId);
 
@@ -56,7 +56,14 @@ export class TodoService {
 
     }
 
-    delete(todoId) {
+    async update(todo) {
+
+        this.todos.set(todo.id, todo);
+        return todo.id;
+
+    }
+
+    async delete(todoId) {
 
         if (this.todos.delete(todoId)) {
             return 'Ok';

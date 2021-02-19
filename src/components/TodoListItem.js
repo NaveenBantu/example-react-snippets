@@ -3,26 +3,19 @@ import { MdDelete } from 'react-icons/md';
 
 export default class TodoListItem extends React.Component {
 
-    constructor(props) {
+    // Events /////
 
-        super(props);
+    handleSelect = () => this.props.onSelect(this.props.todo.id);
 
-        this.state = { selected: false };
+    handleDelete = () => this.props.onDelete(this.props.todo.id);
 
-    }
 
-    handleSelect = () => {
-        this.setState(
-            state => ({ selected: !state.selected })
-        );
-    }
-
-    handleDelete = () => { alert('Todo deleted!'); }
+    // Rendering /////
 
     render() {
 
         let cssClass = 'todo-caption' +
-            (this.state.selected ? ' selected' : '');
+            (this.props.selected ? ' selected' : '');
 
         return (
             <li>
