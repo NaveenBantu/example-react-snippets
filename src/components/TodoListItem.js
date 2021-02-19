@@ -1,13 +1,14 @@
 import React from 'react';
+import PubSub from 'pubsub-js';
 import { MdDelete } from 'react-icons/md';
 
 export default class TodoListItem extends React.Component {
 
     // Events /////
 
-    handleSelect = () => this.props.onSelect(this.props.todo.id);
+    handleSelect = () => PubSub.publish('on-select', this.props.todo.id);
 
-    handleDelete = () => this.props.onDelete(this.props.todo.id);
+    handleDelete = () => PubSub.publish('on-delete', this.props.todo.id);
 
 
     // Rendering /////

@@ -3,13 +3,6 @@ import TodoListItem from './TodoListItem';
 
 export default class TodoList extends React.Component {
 
-    // Events /////
-
-    handleSelect = idTodo => this.props.onSelect(idTodo);
-
-    handleDelete = idTodo => this.props.onDelete(idTodo);
-
-
     // Rendering /////
 
     render() {
@@ -20,8 +13,6 @@ export default class TodoList extends React.Component {
                     key      = {item.id.toString()}
                     todo     = {item}
                     selected = {this.props.todo && item.id === this.props.todo.id}
-                    onSelect = {this.handleSelect}
-                    onDelete = {this.handleDelete}
                 />
             );
 
