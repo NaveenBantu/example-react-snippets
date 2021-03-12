@@ -7,26 +7,19 @@ import { MdAddCircle } from 'react-icons/md';
 
 export default class TodoEditor extends React.Component {
 
-    // Create the Todo editor. Set the current state, where the current Todo
-    // is 'null' (i.e. not selected) and the Todo list is empty. The Todo list
-    // will be filled with data from the 'server', when the Todo editor is
-    // loaded.
-
     constructor(props) {
 
         super(props);
 
         this.state = {
-            todo:  null,     // <- The current Todo, being edited.
-            todos: []        // <- All available Todos.
+            todo:  null,
+            todos: []
         };
 
     }
 
 
     // Initialization /////
-
-    // Initializes the Todo list with the available Todos.
 
     componentDidMount() {
 
@@ -37,89 +30,56 @@ export default class TodoEditor extends React.Component {
 
     // Events /////
 
-    // Creates a new Todo and sets it as the current Todo on the state of
-    // the Todo editor.
-
     handleNew = () => {
         const todo = new Todo();
         this.setState({ todo: todo });
     }
 
-    // Stores the current Todo on the 'server'. If the ID of the Todo is 'null',
-    // then it will be persisted as a new Todo. Otherwise the values of
-    // the existing Todo with that ID will be updated.
-
-    handleStore = () => {
+    handleStore = async () => {
         const todo = this.state.todo;
         if (todo.id) {
-            todoService.update(todo)   // <- 1) Update an exiting Todo.
-                .then(() => {          // then
-                    this.clearTodo();  // <- 2) Clear the current Todo.
-                    this.loadTodos();  // <- 3) Reload available Todos.
-                });
+            await todoService.update(todo);
         } // if
         else {
-            todoService.create(todo)   // <- 1) Create a new Todo.
-                .then(() => {          // then
-                    this.clearTodo();  // <- 2) Clear the current Todo.
-                    this.loadTodos();  // <- 3) Reload available Todos.
-                });
+            await todoService.create(todo)
         } // else
+        this.clearTodo();
+        this.loadTodos();
     }
-
-    // Edits a value of the current Todo.
 
     handleEdit = change => {
-        const todo = {
-            ...this.state.todo,        // <- 1) Merge current Todo
-            ...change                  // <-    with changes.
-        }
-        this.setState({ todo: todo }); // <- 2) Set merged Todo on current state.
+        const todo = { ...this.state.todo, ...change };
+        this.setState({ todo: todo });
     }
 
-    // Displays the details of the selected Todo.
-
-    handleSelect = idTodo => {
-        todoService.read(idTodo)                 // <- 1) Read Todo from 'server'.
-            .then(todo => {                      // then
-                this.setState({ todo: todo });   // <- 2) Set it on the state.
-            });
+    handleSelect = async idTodo => {
+        const todo = await todoService.read(idTodo);
+        this.setState({ todo: todo });
     }
 
-    // Deletes an existing Todo, identified by its ID.
-
-    handleDelete = idTodo => {
-        todoService.delete(idTodo)     // <- 1) Delete an exiting Todo.
-            .then(() => {              // then
-                if (this.state.todo && idTodo === this.state.todo.id) {
-                    this.clearTodo();  // <- 2) Clear current Todo, if it was
-                                       //       the deleted one.
-                } // if
-                this.loadTodos();      // <- 3) Reload available Todos.
-            });
+    handleDelete = async idTodo => {
+        await todoService.delete(idTodo);
+        if (this.state.todo && idTodo === this.state.todo.id) {
+            this.clearTodo();
+        } // if
+        this.loadTodos();
     }
 
 
     // Helpers /////
 
-    // Clears the current Todo from the current state.
-
-    clearTodo() {
+    clearTodo = () => {
 
         this.setState({ todo: null });
     
-    }
+    };
 
-    // Loads all available Todos from the 'server' and set them
-    // on the current state, so they can be displayed by the list.
+    loadTodos = async () => {
 
-    loadTodos() {
-
-        todoService.all().then(
-            todos => { alert("HALLO"); this.setState({ todos: todos }); }
-        );
+        const todos = await todoService.all();
+        this.setState({ todos: todos });
     
-    }
+    };
 
 
     // Rendering /////
