@@ -80,7 +80,7 @@ export default class TodoEditor extends React.Component {
     // Displays the details of the selected Todo.
 
     handleSelect = idTodo => {
-        todoService.get(idTodo)                  // <- 1) Read Todo from 'server'.
+        todoService.read(idTodo)                 // <- 1) Read Todo from 'server'.
             .then(todo => {                      // then
                 this.setState({ todo: todo });   // <- 2) Set it on the state.
             });
@@ -116,7 +116,7 @@ export default class TodoEditor extends React.Component {
     loadTodos() {
 
         todoService.all().then(
-            todos => { this.setState({ todos: todos }); }
+            todos => { alert("HALLO"); this.setState({ todos: todos }); }
         );
     
     }
