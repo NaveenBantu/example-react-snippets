@@ -31,21 +31,19 @@
   flex-direction: column;
 }
 
-.todo-list {
-  list-style: none;
+.center {
+  text-align: center;
 }
 
-.todo-list li {
-  margin: 5px;
+.simple {
+  border: none;
+  background: none;
 }
 
-.todo-caption {
-  background-color: deepskyblue;
-  border-radius: 15px;
-  padding: 5px;
-  margin: 5px;
+.selected {
+  font-weight: bold;
 }
 
-.todo-caption.selected {
-  background-color: dodgerblue;
+.done {
+  text-decoration: line-through;
 }

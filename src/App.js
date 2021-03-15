@@ -9,10 +9,12 @@ class App extends React.Component {
     render() {
 
         return (
-            <div className="App">
-                <Header/>
-                <TodoEditor/>
-                <Footer/>
+            <div className="pure-g">
+                <div className="pure-u-1">
+                    <Header/>
+                    <TodoEditor/>
+                    <Footer/>
+                </div>
             </div>
         );
     }

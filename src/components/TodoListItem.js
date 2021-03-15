@@ -14,20 +14,28 @@ export default class TodoListItem extends React.Component {
 
     render() {
 
-        let cssClass = 'todo-caption' +
-            (this.props.selected ? ' selected' : '');
+        const todo = this.props.todo;
+
+        const style = 'pure-button simple' +
+            (this.props.selected ? ' selected' : '') +
+            (todo.done ? ' done' : '');
 
         return (
-            <li>
-                <span
-                    className = {cssClass}
-                    onClick   = {this.handleSelect}
+            <li className="pure-menu-item">
+                <button
+                    onClick   = {this.handleDelete}
+                    className = "pure-button"
                 >
-                    {this.props.todo.caption}
-                </span>
-                <button onClick={this.handleDelete}>
                     <MdDelete/>
                 </button>
+                <div
+                    onClick   = {this.handleSelect}
+                    className = {style}
+                >
+                    {todo.caption}
+                    &nbsp;
+                    <span className="w3-badge">{todo.priority}</span>
+                </div>
             </li>
         );
 

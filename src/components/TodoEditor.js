@@ -87,10 +87,14 @@ export default class TodoEditor extends React.Component {
     render() {
 
         return (
-            <div className={'row'}>
-                <div>
-                    <button onClick={this.handleNew}><MdAddCircle/></button>
-                    <hr/>
+            <div className="pure-g">
+                <div className="pure-u-1-4">
+                    <button
+                        onClick   = {this.handleNew}
+                        className = "pure-button"
+                    >
+                        <MdAddCircle/>
+                    </button>
                     <TodoList
                         todo     = {this.state.todo}
                         todos    = {this.state.todos}
@@ -98,7 +102,7 @@ export default class TodoEditor extends React.Component {
                         onDelete = {this.handleDelete}
                     />
                 </div>
-                <div>
+                <div className="pure-u-3-4">
                     {
                         this.state.todo &&
                         <TodoDetails

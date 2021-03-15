@@ -25,7 +25,12 @@ export default class TodoList extends React.Component {
                 />
             );
 
-        return <ul className={'todo-list'}>{items}</ul>;
+        return (
+            <div class="pure-menu">
+                <span class="pure-menu-heading">Your Todos</span>
+                <ul className="pure-menu-list">{items}</ul>
+            </div>
+        );
 
     }
 

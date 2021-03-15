@@ -4,12 +4,11 @@ import Clock from './Clock';
 export default function Footer() {
 
     return (
-        <>
-            <hr/>
-            <div>
+        <div className="pure-g center">
+            <div className="pure-u-1">
                 <Clock/>
             </div>
-        </>
+        </div>
     );
 
 }
