@@ -23,7 +23,7 @@ export default class TodoDetails extends React.Component {
             >
                 <fieldset>
                     <div className="pure-control-group">
-                        <label for="caption">Caption</label>
+                        <label htmlFor="caption">Caption</label>
                         <input
                             id       = "caption"
                             name     = "caption"
@@ -33,7 +33,7 @@ export default class TodoDetails extends React.Component {
                         />
                     </div>
                     <div className="pure-control-group">
-                        <label for="description">Description</label>
+                        <label htmlFor="description">Description</label>
                         <textarea
                             id       = "description"
                             name     = "description"
@@ -42,7 +42,7 @@ export default class TodoDetails extends React.Component {
                         />
                     </div>
                     <div className="pure-control-group">
-                        <label for="priority">Priority</label>
+                        <label htmlFor="priority">Priority</label>
                         <select
                             name     = "priority"
                             value    = {this.props.todo.priority}
@@ -55,7 +55,7 @@ export default class TodoDetails extends React.Component {
                     </div>
                     <div className="pure-controls">
                         <label
-                            for = "done"
+                            htmlFor   = "done"
                             className = "pure-checkbox"
                         >
                             <input
