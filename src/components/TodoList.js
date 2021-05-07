@@ -1,33 +1,29 @@
 import React from 'react';
-import todoService from '../services/TodoService';
-import TodoListItem from './TodoListItem';
 
 export default class TodoList extends React.Component {
+
+    // TODO
+    //
+    //  o Equip the todo list with a state, which contains the available
+    //    'Todo's.
+    //
+    //  o When the component is mounted, it should get all 'Todo's from
+    //    the server and assign them to the component's state.
+    //
+    //    Hint: TodoService
+    //
+    //  o Render the loaded 'Todo's.
+    //
 
     constructor(props) {
 
         super(props);
 
-        this.state = { todos: [] };
-
-    }
-
-    componentDidMount() {
-
-        todoService.all().then(
-            todos => { this.setState({ todos: todos }); }
-        );
-    
     }
 
     render() {
 
-        const items =
-            this.state.todos.map(
-                item => <TodoListItem todo={item}/>
-            );
-
-        return <ul>{items}</ul>;
+        return <ul></ul>;
 
     }
 
