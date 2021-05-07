@@ -8,12 +8,16 @@ function App() {
 
   const todos = todoService.all();
 
+  // TODO
+  // 
+  //  o Display the 'TodoList' with the todos loaded by the 'TodoService'.
+  //
+
   return (
     <div className="App">
       <h1>Todos</h1>
       <hr/>
       <div>jukia.com - &copy; {currentYear()}</div>
-      <TodoList todos={todos}/>
     </div>
   );
 }

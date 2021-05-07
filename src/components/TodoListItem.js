@@ -1,10 +1,9 @@
 import React from 'react';
 
-export default function TodoListItem(props) {
-    return (
-        <div>
-            <input type="hidden" value={props.todo.id}/>
-            <input type="text"   value={props.todo.caption}/>
-        </div>
-    );
-}
+// TODO
+//
+//  o Create a function component 'TodoListItem', which displays
+//    the caption of a todo.
+//
+//  o Add a hidden field, which contains the ID of the todo.
+//

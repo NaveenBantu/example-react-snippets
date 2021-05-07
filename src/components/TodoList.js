@@ -1,11 +1,10 @@
 import React from 'react';
-import TodoListItem from './TodoListItem';
 
-export default function TodoList(props) {
-    const items = props.todos.map(item => <li><TodoListItem todo={item}/></li>);
-    return (
-        <ul>
-            {items}
-        </ul>
-    );
-}
+// TODO
+//
+//  o Create a function component 'TodoList', which gets passed in an array
+//    of 'Todo's.
+//
+//  o Display each 'Todo' of the array in a 'TodoListItem'
+//    component.
+//
