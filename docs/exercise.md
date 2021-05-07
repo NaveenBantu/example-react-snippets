@@ -51,3 +51,8 @@ as a parameter and we need to call `super(props)`.
 
 ## What to Do?
 
+Open the file [TodoList](../src/components/TodoList.js) and rewrite
+the function component as a class component.
+
+Open the file [App](../src/App.js) and rewrite the function component
+as a class component.
