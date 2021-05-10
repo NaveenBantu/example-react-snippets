@@ -1,40 +1,36 @@
 import React from 'react';
 import TodoList from './TodoList';
-import TodoDetails from './TodoDetails';
-import Todo from '../model/Todo';
 import { MdAddCircle } from 'react-icons/md';
 
 export default class TodoEditor extends React.Component {
 
-    constructor(props) {
-
-        super(props);
-
-        this.state = { todo: null };
-
-    }
-
-    handleNew = () => {
-        const todo = new Todo();
-        this.setState(
-            state => ({ todo: todo })
-        );
-    }
+    // TODO
+    //
+    //  o Create a state, which can contain a 'Todo'.
+    //
+    //  o Initialize it with 'null'.
+    //
+    //  o When the 'Add' button was clicked, create a new 'Todo' and assign it
+    //    to the state variable.
+    //
+    //    Hint: Remember to use 'this.setState(...)', when you want to modify
+    //          the state.
+    //
+    //  o Render the 'TodoDetails' only if the state variable contains
+    //    a 'Todo'.
+    //
 
     render() {
 
         return (
             <div className={'row'}>
                 <div>
-                    <button onClick={this.handleNew}><MdAddCircle/></button>
+                    <button><MdAddCircle/></button>
                     <hr/>
                     <TodoList/>
                 </div>
                 <div>
-                    {
-                        this.state.todo &&
-                        <TodoDetails todo={this.state.todo}/>
-                    }
+                    Render todo form here!
                 </div>
             </div>
         );
