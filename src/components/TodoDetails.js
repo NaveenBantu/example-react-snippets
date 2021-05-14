@@ -1,18 +1,28 @@
 import React from 'react';
 import Priority from '../model/Priority';
 
+// TODO
+//
+//  o With the properties two functions
+//
+//      'onEdit(...)' and
+//      'onStore()'
+//
+//    should be passed to this component.
+//
+//  o Apply these functions, where you think they should be called.
+//
+
 export default class TodoDetails extends React.Component {
 
     handleChange = event => {
         const target = event.target;
         const value  = target.type === 'checkbox' ? target.checked : target.value;
         const name   = target.name;
-        this.props.onEdit({ [name]: value });
     }
 
     handleSubmit = event => {
         event.preventDefault();
-        this.props.onStore();
     }
 
     render() {

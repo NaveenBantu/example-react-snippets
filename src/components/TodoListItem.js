@@ -1,13 +1,22 @@
 import React from 'react';
 import { MdDelete } from 'react-icons/md';
 
+// TODO
+//
+//  o A function, which selects the current 'Todo' is passed as a property
+//    to this component. Where has it to be called?
+//
+//  o A function, which deletes the current 'Todo' is passed as a property
+//    to this component. Where has it to be called?
+//
+
 export default class TodoListItem extends React.Component {
 
     // Events /////
 
-    handleSelect = () => this.props.onSelect(this.props.todo.id);
+    handleSelect = () => alert('Select Me');
 
-    handleDelete = () => this.props.onDelete(this.props.todo.id);
+    handleDelete = () => alert('Delete Me');
 
 
     // Rendering /////

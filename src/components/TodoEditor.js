@@ -1,8 +1,6 @@
 import React from 'react';
 import TodoList from './TodoList';
 import TodoDetails from './TodoDetails';
-import Todo from '../model/Todo';
-import todoService from '../services/TodoService';
 import { MdAddCircle } from 'react-icons/md';
 
 export default class TodoEditor extends React.Component {
@@ -30,6 +28,10 @@ export default class TodoEditor extends React.Component {
 
     componentDidMount() {
 
+        // TODO
+        //
+        //  o Load the available 'Todo's.
+        //
         this.loadTodos();
 
     }
@@ -41,8 +43,15 @@ export default class TodoEditor extends React.Component {
     // the Todo editor.
 
     handleNew = () => {
-        const todo = new Todo();
-        this.setState({ todo: todo });
+            
+        // TODO
+        //
+        //  o Create an handler, which creates a new 'Todo' object and assigns
+        //    it to the field 'todo' of the component state.
+        //
+        //  o Call the handler 'handleNew'.
+        //
+
     }
 
     // Stores the current Todo on the 'server'. If the ID of the Todo is 'null',
@@ -50,21 +59,32 @@ export default class TodoEditor extends React.Component {
     // the existing Todo with that ID will be updated.
 
     handleStore = () => {
-        const todo = this.state.todo;
-        if (todo.id) {
-            todoService.update(todo)   // <- 1) Update an exiting Todo.
-                .then(() => {          // then
-                    this.clearTodo();  // <- 2) Clear the current Todo.
-                    this.loadTodos();  // <- 3) Reload available Todos.
-                });
-        } // if
-        else {
-            todoService.create(todo)   // <- 1) Create a new Todo.
-                .then(() => {          // then
-                    this.clearTodo();  // <- 2) Clear the current Todo.
-                    this.loadTodos();  // <- 3) Reload available Todos.
-                });
-        } // else
+
+        // TODO
+        //
+        //  o Get the current 'Todo' from the state.
+        //
+        //  o If the 'Todo' has a valid ID, then use 'todoService.update(...)'
+        //    to update the values of the existing 'Todo'.
+        //
+        //  o If the 'Todo' is new, then use 'todoService.create(...)' to
+        //    create a new 'Todo' in the repository.
+        //
+        //  o After both actions,
+        //
+        //      o clear the current 'Todo' ('clearTodo()') and
+        //      o load the available 'Todo's ('loadTodos()').
+        //
+        //  Hint: Since all methods of the 'TodoService' are asynchronous,
+        //        use a construction like
+        //
+        //          todoService.update(todo).then(() => ...);
+        //
+        //        In the 'then(...)' method put a function, which performs
+        //        the actions that should happen, after the service function
+        //        has completed.
+        //
+
     }
 
     // Edits a value of the current Todo.
@@ -80,23 +100,33 @@ export default class TodoEditor extends React.Component {
     // Displays the details of the selected Todo.
 
     handleSelect = idTodo => {
-        todoService.get(idTodo)                  // <- 1) Read Todo from 'server'.
-            .then(todo => {                      // then
-                this.setState({ todo: todo });   // <- 2) Set it on the state.
-            });
+
+        // TODO
+        //
+        //  o When a list item gets selected, then retrieve that 'Todo' from
+        //    the repository, using the 'todoService'.
+        //
+
     }
 
     // Deletes an existing Todo, identified by its ID.
 
     handleDelete = idTodo => {
-        todoService.delete(idTodo)     // <- 1) Delete an exiting Todo.
-            .then(() => {              // then
-                if (this.state.todo && idTodo === this.state.todo.id) {
-                    this.clearTodo();  // <- 2) Clear current Todo, if it was
-                                       //       the deleted one.
-                } // if
-                this.loadTodos();      // <- 3) Reload available Todos.
-            });
+
+        // TODO
+        //
+        //  o Use the 'todoService' to delete the 'Todo' with the specified ID.
+        //
+        //  o After the 'Todo' has been deleted, clear the 'Todo' details,
+        //    if the selected 'Todo' was the deleted 'Todo'.
+        //
+        //    Hint: 'clearTodo()'
+        //
+        //  o After the 'Todo' has been deleted, load the available 'Todo's.
+        //
+        //    Hint: 'loadTodos()'
+        //
+
     }
 
 
@@ -106,8 +136,11 @@ export default class TodoEditor extends React.Component {
 
     clearTodo() {
 
-        this.setState({ todo: null });
-    
+        // TODO
+        //
+        //  o Set the state field 'todo' to 'null'.
+        //
+
     }
 
     // Loads all available Todos from the 'server' and set them
@@ -115,36 +148,39 @@ export default class TodoEditor extends React.Component {
 
     loadTodos() {
 
-        todoService.all().then(
-            todos => { this.setState({ todos: todos }); }
-        );
-    
+        // TODO
+        //
+        //  o Load all avaialble 'Todo's from the 'todoService' and set
+        //    the state field 'todos' to the loaded values.
+        //
+
     }
 
 
     // Rendering /////
+
+    // TODO
+    //
+    //  o Pass handler functions, where necessary.
+    //
 
     render() {
 
         return (
             <div className={'row'}>
                 <div>
-                    <button onClick={this.handleNew}><MdAddCircle/></button>
+                    <button><MdAddCircle/></button>
                     <hr/>
                     <TodoList
-                        todo     = {this.state.todo}
-                        todos    = {this.state.todos}
-                        onSelect = {this.handleSelect}
-                        onDelete = {this.handleDelete}
+                        todo  = {this.state.todo}
+                        todos = {this.state.todos}
                     />
                 </div>
                 <div>
                     {
                         this.state.todo &&
                         <TodoDetails
-                            todo    = {this.state.todo}
-                            onEdit  = {this.handleEdit}
-                            onStore = {this.handleStore}
+                            todo = {this.state.todo}
                         />
                     }
                 </div>
