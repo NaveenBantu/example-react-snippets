@@ -1,5 +1,4 @@
 import React from 'react';
-import PubSub from 'pubsub-js';
 import TodoList from './TodoList';
 import TodoDetails from './TodoDetails';
 import Todo from '../model/Todo';
@@ -26,10 +25,17 @@ export default class TodoEditor extends React.Component {
 
         this.loadTodos();
 
-        PubSub.subscribe('on-select', (msg, id)     => this.handleSelect(id));
-        PubSub.subscribe('on-edit',   (msg, change) => this.handleEdit(change));
-        PubSub.subscribe('on-store',  (msg, data)   => this.handleStore());
-        PubSub.subscribe('on-delete', (msg, id)     => this.handleDelete(id));
+        // TODO
+        //
+        //  o Subscribe to the events
+        //
+        //      o 'on-select'
+        //      o 'on-edit'
+        //      o 'on-store'
+        //      o 'on-delete'
+        //
+        //  o Perform the correct operations for each event type.
+        //
 
     }
 

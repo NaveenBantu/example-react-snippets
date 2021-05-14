@@ -1,6 +1,12 @@
 import React from 'react';
-import PubSub from 'pubsub-js';
 import Priority from '../model/Priority';
+
+// TODO
+//
+//  o Publish the changed value.
+//
+//  o Publish that the form has been submitted.
+//
 
 export default class TodoDetails extends React.Component {
 
@@ -8,12 +14,10 @@ export default class TodoDetails extends React.Component {
         const target = event.target;
         const value  = target.type === 'checkbox' ? target.checked : target.value;
         const name   = target.name;
-        PubSub.publish('on-edit', { [name]: value });
     }
 
     handleSubmit = event => {
         event.preventDefault();
-        PubSub.publish('on-store', {});
     }
 
     render() {
