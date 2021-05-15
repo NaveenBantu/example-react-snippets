@@ -9,49 +9,58 @@ export class TodoService {
 
     async create(todo) {
 
-        const config   = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(todo)
-        };
-        const response = await fetch(this.serviceUrl, config);
-        const todoId   = await response.text();
-        return parseInt(todoId);
+        // TODO
+        //
+        //  o Send a POST request, which stores a new 'Todo' in the repository.
+        //
+        //  o Return the ID of the created 'Todo'.
+        //
+
+        return -1;
 
     }
 
     async read(todoId) {
 
-        const response = await fetch(`${this.serviceUrl}/${todoId}`);
-        const todo     = await response.json();
-        return todo;
+        // TODO
+        //
+        //  o Send a GET request, which returns the 'Todo' with
+        //    the specified ID from the repository.
+        //
+
+        return undefined;
 
     }
 
     async update(todo) {
 
-        const config = {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(todo)
-        };
-        await fetch(this.serviceUrl, config);
+        // TODO
+        //
+        //  o Send a PUT request, which updates an existing 'Todo'
+        //    in the repository.
+        //
 
     }
 
     async delete(todoId) {
 
-        const url    = `${this.serviceUrl}/${todoId}`;
-        const config = { method: 'DELETE' };
-        await fetch(url, config);
+        // TODO
+        //
+        //  o Send a DELETE request, which removes an existing 'Todo'
+        //    from the repository.
+        //
 
     }
 
     async all() {
 
-        const response = await fetch(this.serviceUrl);
-        const todos    = await response.json();
-        return todos;
+        // TODO
+        //
+        //  o Send a GET request, which returns all 'Todo's
+        //    of the repository.
+        //
+
+        return [];
 
     }
 
