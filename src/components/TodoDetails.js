@@ -8,12 +8,12 @@ export default class TodoDetails extends React.Component {
         const target = event.target;
         const value  = target.type === 'checkbox' ? target.checked : target.value;
         const name   = target.name;
-        PubSub.publish('on-edit', { [name]: value });
+        PubSub.publishSync('on-edit', { [name]: value });
     }
 
     handleSubmit = event => {
         event.preventDefault();
-        PubSub.publish('on-store', {});
+        PubSub.publishSync('on-store', {});
     }
 
     render() {

@@ -6,9 +6,9 @@ export default class TodoListItem extends React.Component {
 
     // Events /////
 
-    handleSelect = () => PubSub.publish('on-select', this.props.todo.id);
+    handleSelect = () => PubSub.publishSync('on-select', this.props.todo.id);
 
-    handleDelete = () => PubSub.publish('on-delete', this.props.todo.id);
+    handleDelete = () => PubSub.publishSync('on-delete', this.props.todo.id);
 
 
     // Rendering /////
