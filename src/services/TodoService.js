@@ -68,7 +68,7 @@ export class TodoService {
     }
 
     all() {
-
+        console.log("this is refering to ",this);
         return Array.from(this.todos.values());
 
     }

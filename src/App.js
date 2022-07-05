@@ -16,6 +16,7 @@ function App() {
   return (
     <div className="App">
       <h1>Todos</h1>
+      <TodoList todos={todos}/>
       <hr/>
       <div>jukia.com - &copy; {currentYear()}</div>
     </div>
