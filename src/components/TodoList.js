@@ -20,8 +20,8 @@ export default class TodoList extends React.Component {
     
     }
 
-    removeTodo(){
-        console.log("removing todo ")
+    removeTodo(id){
+        console.log("removing todo ",id);
     }
 
     render() {

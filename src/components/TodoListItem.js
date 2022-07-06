@@ -35,11 +35,11 @@ export default class TodoListItem extends React.Component {
         let cssClassSelected = 'todo-caption selected';
 
         return (
-            <li onClick={(e) => this.handleclick(e)}>
-                <span className={this.state.toggle?cssClassSelected:cssClass}>
+            <li>
+                <span className={this.state.toggle?cssClassSelected:cssClass} onClick={() => this.handleclick()}>
                     {this.props.todo.caption}
                 </span>
-                <button onClick={this.props.deleteTodo}>
+                <button onClick={() => this.props.deleteTodo(this.props.todo.id)}>
                     <MdDelete/>
                 </button>
             </li>
