@@ -20,11 +20,15 @@ export default class TodoList extends React.Component {
     
     }
 
+    removeTodo(){
+        console.log("removing todo ")
+    }
+
     render() {
 
         const items =
             this.state.todos.map(
-                item => <TodoListItem todo={item}/>
+                item => <TodoListItem todo={item} deleteTodo={this.removeTodo}/>
             );
 
         return <ul className={'todo-list'}>{items}</ul>;

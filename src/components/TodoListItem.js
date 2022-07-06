@@ -16,7 +16,12 @@ export default class TodoListItem extends React.Component {
     constructor(props) {
 
         super(props);
+        this.state = {toggle: false};
+    }
 
+    handleclick(e) {
+        console.log("inside click event",e);
+        this.setState({toggle:!this.state.toggle});
     }
 
     render() {
@@ -27,13 +32,14 @@ export default class TodoListItem extends React.Component {
         //    class.
         //
         let cssClass = 'todo-caption';
+        let cssClassSelected = 'todo-caption selected';
 
         return (
-            <li>
-                <span className={cssClass}>
+            <li onClick={(e) => this.handleclick(e)}>
+                <span className={this.state.toggle?cssClassSelected:cssClass}>
                     {this.props.todo.caption}
                 </span>
-                <button>
+                <button onClick={this.props.deleteTodo}>
                     <MdDelete/>
                 </button>
             </li>
