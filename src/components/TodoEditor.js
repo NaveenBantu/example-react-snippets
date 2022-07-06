@@ -1,9 +1,20 @@
 import React from 'react';
 import TodoList from './TodoList';
 import { MdAddCircle } from 'react-icons/md';
+import TodoDetails from './TodoDetails';
+import todoService from '../services/TodoService';
+import Todo from '../model/Todo';
 
 export default class TodoEditor extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = { todo: null };
+    }
+
+    addTodo = () => {
+        this.setState({todo: new Todo()})
+    }
     // TODO
     //
     //  o Create a state, which can contain a 'Todo'.
@@ -25,16 +36,17 @@ export default class TodoEditor extends React.Component {
         return (
             <div className={'row'}>
                 <div>
-                    <button><MdAddCircle/></button>
-                    <hr/>
-                    <TodoList/>
+                    <button onClick={this.addTodo}><MdAddCircle /></button>
+                    <hr />
+                    <TodoList />
                 </div>
                 <div>
-                    Render todo form here!
+                    {this.state.todo && <TodoDetails todo={this.state.todo} createtodo={this.createToDo}/>}
+                    {/* Render todo form here! */}
                 </div>
             </div>
         );
-        
+
     }
 
 }
