@@ -3,15 +3,17 @@ import React, { useState } from 'react';
 export default function TodoDetails(props) {
 
     const [caption, setCaption] = useState('');
+    const [description, setDescription] = useState('');
+
 
     const handleChange = (e) =>{
-        setCaption(e.target.value);
-        console.log("change ",e.target.value);
+        (e.target.id==='caption') ? setCaption(e.target.value) : setDescription(e.target.value);
+        console.log("change ",e.target);
     }
 
     const handleSubmit = () => {
         console.log('created todo ',caption)
-        alert('Created a new Todo: ' + caption);
+        alert('Created a new Todo: ' + caption + ' Desc: '+description);
     }
 
     return (
